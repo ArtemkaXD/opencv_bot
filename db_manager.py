@@ -87,11 +87,12 @@ def save_voice(url, id=0):
                  "-y"], input=buf)
 
         if not p.returncode:
+            result['returncode'] = 0
             voice_id += 1
             cursor.execute("UPDATE USERS SET VOICE_ID = ? WHERE USER_ID = ?",
                            (voice_id, id,))
             conn.commit()
-    result['returncode'] = 0
+    
     return result
 
 
